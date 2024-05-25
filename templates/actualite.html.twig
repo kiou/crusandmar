@@ -1,0 +1,41 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block title %} <title>{{ actualite.titre }}</title>{% endblock %}
+
+{% block opengraph %}
+    <meta property="og:title" content="{{ actualite.titre }}">
+    <meta property="og:description" content="{{ actualite.resume }}">
+    {#
+        <meta property="og:url" content="https://lucpinelli.fr{{app.request.getBaseURL() ~ path('app_actualites_view',{'slug': actualite.slug, 'id': actualite.id})}}">
+        <meta property="og:image" content="https://lucpinelli.fr{{ asset('img/upload/' ~ actualite.image) }}">
+    #}
+{% endblock %}
+
+{% block content %}
+
+    {# En tête Page #}
+    <section class="headerPage headerActualite">
+        <div class="inner">
+            <div class="headerPageContent"  style="background-image:url({{ asset('img/upload/' ~ actualite.image) }})">
+                <div class="headerPageTitle">
+                    <div>
+                        <h1>{{ actualite.titre }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="patern1">
+        <div class="inner">
+        </div>
+    </section>
+
+    {# Contenu d'une page #}
+    <section class="pageContent">
+        <div class="inner">
+            {{ actualite.contenu|raw }}
+        </div>
+    </section>
+
+{% endblock %}

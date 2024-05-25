@@ -1,0 +1,67 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block title %} <title>{{ page.titre }}</title>{% endblock %}
+
+{% block content %}
+
+    {# En tête Page #}
+    <section class="headerPage">
+        <div class="inner">
+            <div class="headerPageContent"  style="background-image:url({{ asset('img/upload/' ~ page.image) }})">
+                <div class="headerPageTitle">
+                    <div>
+                        <h1>{{ page.titre }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="patern1">
+        <div class="inner">
+        </div>
+    </section>
+
+    {# Contenu d'une page #}
+    <section class="pageContent">
+        <div class="inner">
+            {{ page.contenu|raw }}
+        </div>
+
+        {% if page.id == 8 %}
+
+            <div class="produitsPage">
+
+                <div class="produitsTitre">
+                    <h2>Products</h2>
+                    <p>Here we market</p>
+                </div>
+
+                <div class="produits">
+                    {% for product in products %}
+                        <div class="product">
+                            <div class="productImage owl-two owl-carousel owl-theme">
+                                {% if product.image is not null %}
+                                    <img src="{{ asset('img/miniature/' ~ product.image) }}">
+                                {% endif %}
+                                {% if product.image2 is not null %}
+                                    <img src="{{ asset('img/miniature/' ~ product.image2) }}">
+                                {% endif %}
+                                {% if product.image3 is not null %}
+                                    <img src="{{ asset('img/miniature/' ~ product.image3) }}">
+                                {% endif %}
+                            </div>
+                            <div class="productContenu">
+                                <h3>{{ product.title }}</h3>
+                                <p>{{ product.contenu|raw }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        {% endif %}
+    </section>
+
+{% endblock %}

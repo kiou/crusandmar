@@ -1,0 +1,38 @@
+{% extends 'app/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="sectionliste">
+        <div class="inner">
+
+            <div class="listeTitre">
+                {{ render(controller('App\\Controller\\BlockController::view', {'position': 'actualitestop-block'} )) }}
+            </div>
+
+            <div class="actualites">
+
+                {% for actualite in actualites %}
+                    <div class="actualite">
+                        <div class="actualiteImage">
+                            <img src="{{ asset('img/miniature/' ~ actualite.image) }}">
+
+                            <div class="actualiteDate">
+                                <p class="flag">{{actualite.created|localizeddate('none', 'none', null, null, 'MMMM Y')}}</p>
+                            </div>
+                        </div>
+                        <div class="actualiteContenu">
+                            <a href="{{ path('app_actualites_view',{'slug': actualite.slug, 'id': actualite.id})}}"><h3>{{ actualite.titre }}</h3></a>
+                            <p>{{ actualite.resume}}</p>
+                        </div>
+
+                        <a href="{{ path('app_actualites_view',{'slug': actualite.slug, 'id': actualite.id})}}" class="link">lire la suite</a>
+                    </div>
+                {% endfor %}
+                
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+{% endblock %}

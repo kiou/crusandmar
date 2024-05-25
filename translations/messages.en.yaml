@@ -1,0 +1,11 @@
+menu:
+    link1: About-us
+    link2: Services & Products
+    link3: News   
+    link4: Contact-us 
+
+    langueen: English
+    languefr: French
+    languees: Spanish
+btn:
+    showmore: Learn more

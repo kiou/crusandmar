@@ -1,0 +1,40 @@
+<footer class="footer">
+    <div class="inner">
+        <div class="footerHeader">
+            <img src="{{ asset('img/logofooter.png') }}">
+            {{ render(controller('App\\Controller\\BlockController::view', {'position': 'footer-block'} )) }}
+        </div>
+        <div class="footerCols">
+            <div class="footerCol">
+                <ul>
+                    <li><a href="{{ render(controller('App\\Controller\\PageController::getLink',{ 'position': 'about-page' })) }}">{{ 'menu.link1'|trans }}</a></li>
+                    <li><a href="{{ render(controller('App\\Controller\\PageController::getLink',{ 'position': 'products-page' })) }}">{{ 'menu.link2'|trans }}</a></li>
+                    <li><a href="{{ path('app_actualites') }}">{{ 'menu.link3'|trans }}</a></li>
+                    <li><a href="{{ path('app_contact') }}">{{ 'menu.link4'|trans }}</a></li>
+                </ul>
+            </div>
+            <div class="footerCol col2">
+                <h3>social network</h3>
+                <ul>
+                    {% if entreprise.youtube is not null %}
+                        <li><a href="{{ entreprise.youtube }}" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                    {% endif %}
+                    {% if entreprise.facebook is not null %}
+                        <li><a href="{{ entreprise.facebook }}" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                    {% endif %}
+                    {% if entreprise.instagram is not null %}
+                        <li><a href="{{ entreprise.instagram }}" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                    {% endif %}
+                    {% if entreprise.linkedin is not null %}
+                        <li><a href="{{ entreprise.linkedin }}" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+
+    <div class="footerTop"></div>
+    <div class="patern7"></div>
+    <div class="patern8"></div>
+</footer>
